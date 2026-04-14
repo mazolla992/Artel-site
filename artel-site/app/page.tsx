@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import Hero from '@/components/Hero'
+
+const TariffPicker = dynamic(() => import('@/components/TariffPicker'), { ssr: false })
 import PainVsSolution from '@/components/PainVsSolution'
 import Pains from '@/components/Pains'
 import Stats from '@/components/Stats'
@@ -39,6 +42,19 @@ export default function HomePage() {
       <Roles />
       <BusinessNiches />
       <Timeline />
+
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+              Какой тариф подойдёт вам?
+            </h2>
+            <p className="text-gray-500">Ответьте на 2 вопроса — подберём решение под ваш бизнес</p>
+          </div>
+          <TariffPicker />
+        </div>
+      </section>
+
       <Calculator />
       <Comparison />
       <Reviews />
